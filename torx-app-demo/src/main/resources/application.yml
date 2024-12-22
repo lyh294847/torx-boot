@@ -1,0 +1,15 @@
+spring:
+  data:
+    redis:
+      host: 172.27.151.103
+      port: 6379
+      database: 1
+
+boot:
+  cache:
+    cache-null: true
+#    configs:
+#      ww:
+#        expire: 5s
+  lock:
+    enable-aspect: true
