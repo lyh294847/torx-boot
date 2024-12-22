@@ -1,6 +1,7 @@
 package top.torx.core.component.lock;
 
 import java.lang.annotation.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 锁注解
@@ -12,7 +13,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
-public @interface Lock {
+public @interface SysLock {
 
     /**
      * 锁key
@@ -22,14 +23,19 @@ public @interface Lock {
     String value() default "";
 
     /**
-     * 默认超时时间 毫秒
-     */
-    long timeout() default 5000;
-
-    /**
      * 获取锁时等待时间 毫秒
      */
-    long waitTimes() default 5000;
+    long waitTime() default 100;
+
+    /**
+     * 默认超时时间 毫秒
+     */
+    long leaseTime() default 5000;
+
+    /**
+     * 时间单位
+     */
+    TimeUnit timeUnit() default TimeUnit.MILLISECONDS;
 
     /**
      * 得不到令牌的提示语

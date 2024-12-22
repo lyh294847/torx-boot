@@ -12,6 +12,7 @@ import java.util.Map;
  */
 public abstract class AbstractCacheOps implements CacheOps {
 
+    protected static final Object NULL_VALUE = NullValue.INSTANCE;
 
     /**
      * 判断缓存值是否为空对象

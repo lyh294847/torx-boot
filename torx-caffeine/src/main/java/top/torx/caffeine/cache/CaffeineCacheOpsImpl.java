@@ -3,7 +3,6 @@ package top.torx.caffeine.cache;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.Expiry;
-import org.springframework.cache.support.NullValue;
 import top.torx.core.component.cache.AbstractCacheOps;
 import top.torx.core.component.cache.CacheProperties;
 
@@ -93,7 +92,7 @@ public class CaffeineCacheOpsImpl extends AbstractCacheOps {
         T value = getValue(cache.getIfPresent(key));
         if (value == null && loader != null) {
             value = loader.apply(key);
-            this.setEx(key, value == null && cacheNull ? NullValue.INSTANCE : value, expire);
+            this.setEx(key, value == null && cacheNull ? NULL_VALUE : value, expire);
         }
         return returnValue(value);
     }

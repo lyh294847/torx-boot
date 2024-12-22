@@ -3,7 +3,6 @@ package top.torx.redisson.cache;
 import lombok.RequiredArgsConstructor;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
-import org.redisson.spring.cache.NullValue;
 import top.torx.core.component.cache.AbstractCacheOps;
 import top.torx.core.component.cache.RedisCacheOps;
 
@@ -72,7 +71,7 @@ public class RedissonCacheOpsImpl extends AbstractCacheOps implements RedisCache
                 }
                 try {
                     value = loader.apply(key);
-                    this.setEx(key, value == null && cacheNull ? NullValue.INSTANCE : value, expire);
+                    this.setEx(key, value == null && cacheNull ? NULL_VALUE : value, expire);
                 } finally {
                     KEY_LOCKS.remove(key);
                 }
