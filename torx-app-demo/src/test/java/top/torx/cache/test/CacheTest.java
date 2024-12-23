@@ -3,9 +3,11 @@ package top.torx.cache.test;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import top.torx.biz.demo.BizDemoApplication;
+import top.torx.biz.demo.DemoApplication;
 import top.torx.core.component.cache.CacheOps;
 import top.torx.dto.Person;
+
+import java.time.Duration;
 
 
 /**
@@ -13,7 +15,7 @@ import top.torx.dto.Person;
  * @version 1.0
  * @date 2024/1/24 14:10
  */
-@SpringBootTest(classes = BizDemoApplication.class)
+@SpringBootTest(classes = DemoApplication.class)
 public class CacheTest {
 
     @Autowired
@@ -24,8 +26,7 @@ public class CacheTest {
         Person person = new Person();
         person.setName("张三");
         person.setAge(18);
-        cacheOps.set("b", person);
-//        cacheOps.expire("b", Duration.ofSeconds(1));
+        cacheOps.setEx("b", person, Duration.ofSeconds(1));
 //        cacheOps.del("b");
 
         Person s = cacheOps.get("b");

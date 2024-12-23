@@ -10,7 +10,7 @@ import java.util.HashMap;
  * @Author: LiuYuHua
  * @Date: 2024/12/22 11:54
  */
-public class AjaxResult extends HashMap<String, Object> {
+public class RestResult extends HashMap<String, Object> {
 
     private static final long serialVersionUID = 1L;
 
@@ -33,7 +33,7 @@ public class AjaxResult extends HashMap<String, Object> {
     /**
      * 初始化一个新创建的 AjaxResult 对象，使其表示一个空消息。
      */
-    public AjaxResult() {
+    public RestResult() {
     }
 
 
@@ -44,7 +44,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @param msg  返回内容
      * @param data 数据对象
      */
-    public AjaxResult(int code, String msg, Object data) {
+    public RestResult(int code, String msg, Object data) {
         super.put(CODE_TAG, code);
         super.put(MSG_TAG, msg);
         super.put(DATA_TAG, data);
@@ -55,8 +55,8 @@ public class AjaxResult extends HashMap<String, Object> {
      *
      * @return 成功消息
      */
-    public static AjaxResult success() {
-        return AjaxResult.success("操作成功");
+    public static RestResult success() {
+        return RestResult.success("操作成功");
     }
 
     /**
@@ -64,8 +64,8 @@ public class AjaxResult extends HashMap<String, Object> {
      *
      * @return 成功消息
      */
-    public static AjaxResult success(Object data) {
-        return AjaxResult.success("操作成功", data);
+    public static RestResult success(Object data) {
+        return RestResult.success("操作成功", data);
     }
 
     /**
@@ -74,8 +74,8 @@ public class AjaxResult extends HashMap<String, Object> {
      * @param msg 返回内容
      * @return 成功消息
      */
-    public static AjaxResult success(String msg) {
-        return AjaxResult.success(msg, null);
+    public static RestResult success(String msg) {
+        return RestResult.success(msg, null);
     }
 
     /**
@@ -85,8 +85,8 @@ public class AjaxResult extends HashMap<String, Object> {
      * @param data 数据对象
      * @return 成功消息
      */
-    public static AjaxResult success(String msg, Object data) {
-        return new AjaxResult(ExceptionCode.SUCCESS.getCode(), msg, data);
+    public static RestResult success(String msg, Object data) {
+        return new RestResult(ExceptionCode.SUCCESS.getCode(), msg, data);
     }
 
     /**
@@ -97,7 +97,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @return 数据对象
      */
     @Override
-    public AjaxResult put(String key, Object value) {
+    public RestResult put(String key, Object value) {
         super.put(key, value);
         return this;
     }
