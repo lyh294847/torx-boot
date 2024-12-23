@@ -38,7 +38,7 @@ public interface LockOps {
      *
      * @param key       key
      * @param waitTime  获取时等待时间
-     * @param leaseTime 锁持有超时时间
+     * @param leaseTime 锁持有超时时间 这个时间对本地锁无效，本地锁不会自动释放，如果redis锁也不想自己释放，可以设置为-1
      * @return 成功/失败
      */
     boolean tryLock(String key, long waitTime, long leaseTime, TimeUnit unit);

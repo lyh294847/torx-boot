@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public @interface SysLock {
 
     /**
-     * 锁key
+     * 锁key。如果不填，会根据类名和方法名自动构建
      *
      * @return {String}
      */

@@ -11,4 +11,10 @@
 
     <artifactId>torx-app-user-biz</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>top.torx</groupId>
+            <artifactId>torx-mybatis</artifactId>
+        </dependency>
+    </dependencies>
 </project>

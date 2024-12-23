@@ -25,13 +25,13 @@ import java.util.Map;
 public class BootRedissonAutoConfiguration {
 
     @Bean
-    public CacheOps redissonCacheOps(RedissonClient redissonClient) {
+    public CacheOps redissonCacheOpsImpl(RedissonClient redissonClient) {
         return new RedissonCacheOpsImpl(redissonClient);
     }
 
 
     @Bean
-    public LockOps redissonLockOps(RedissonClient redissonClient) {
+    public LockOps redissonLockOpsImpl(RedissonClient redissonClient) {
         return new RedissonLockOpsImpl(redissonClient);
     }
 

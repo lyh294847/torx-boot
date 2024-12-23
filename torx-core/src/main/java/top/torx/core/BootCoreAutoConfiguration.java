@@ -1,11 +1,13 @@
 package top.torx.core;
 
+import cn.hutool.extra.spring.SpringUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import top.torx.core.component.cache.CacheProperties;
-import top.torx.core.component.lock.LocalLockOpsImpl;
+import top.torx.core.component.lock.GuavaLockOpsImpl;
 import top.torx.core.component.lock.LockOps;
 import top.torx.core.component.lock.LockProperties;
 
@@ -17,12 +19,13 @@ import top.torx.core.component.lock.LockProperties;
  */
 @RequiredArgsConstructor
 @EnableConfigurationProperties({CacheProperties.class, LockProperties.class})
+@Import(SpringUtil.class)
 public class BootCoreAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public LockOps localLockOps() {
-        return new LocalLockOpsImpl();
+    public LockOps guavaLockOpsImpl() {
+        return new GuavaLockOpsImpl();
     }
 
 }
