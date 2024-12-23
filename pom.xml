@@ -16,6 +16,7 @@
         <module>torx-mybatis</module>
         <module>torx-redisson</module>
         <module>torx-web</module>
+        <module>torx-log</module>
     </modules>
 
     <properties>
@@ -86,6 +87,11 @@
             <dependency>
                 <groupId>top.torx</groupId>
                 <artifactId>torx-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>top.torx</groupId>
+                <artifactId>torx-log</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
