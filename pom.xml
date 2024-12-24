@@ -17,6 +17,7 @@
         <module>torx-redisson</module>
         <module>torx-web</module>
         <module>torx-log</module>
+        <module>torx-security</module>
     </modules>
 
     <properties>
@@ -102,6 +103,11 @@
             <dependency>
                 <groupId>top.torx</groupId>
                 <artifactId>torx-redisson</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>top.torx</groupId>
+                <artifactId>torx-security</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

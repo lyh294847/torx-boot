@@ -8,6 +8,7 @@ import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.Map;
 import java.util.Set;
@@ -81,7 +82,7 @@ public class WorkQueueService {
     }
 
     /**
-     * 处理消息（带确认机制）
+     * 处理消息（带��认机制）
      */
     private void processMessageWithAck(String key, MessageWrapper wrapper, String consumerName) {
         String messageId = wrapper.getMessageId();
@@ -163,5 +164,15 @@ public class WorkQueueService {
     
     private RMap<String, MessageStatus> getStatusMap(String key) {
         return redissonClient.getMap("status:" + key);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    public void adminOnlyMethod() {
+        // 只有管理员可以访问的方法
+    }
+
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    public void userMethod() {
+        // 用户和管理员都可以访问的方法
     }
 } 
