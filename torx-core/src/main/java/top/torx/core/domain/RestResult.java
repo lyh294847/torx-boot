@@ -50,13 +50,18 @@ public class RestResult extends HashMap<String, Object> {
         super.put(DATA_TAG, data);
     }
 
+    public RestResult setMsg(String msg) {
+        put(MSG_TAG, msg);
+        return this;
+    }
+
     /**
      * 返回成功消息
      *
      * @return 成功消息
      */
     public static RestResult success() {
-        return RestResult.success("操作成功");
+        return RestResult.success(null);
     }
 
     /**
@@ -65,28 +70,7 @@ public class RestResult extends HashMap<String, Object> {
      * @return 成功消息
      */
     public static RestResult success(Object data) {
-        return RestResult.success("操作成功", data);
-    }
-
-    /**
-     * 返回成功消息
-     *
-     * @param msg 返回内容
-     * @return 成功消息
-     */
-    public static RestResult success(String msg) {
-        return RestResult.success(msg, null);
-    }
-
-    /**
-     * 返回成功消息
-     *
-     * @param msg  返回内容
-     * @param data 数据对象
-     * @return 成功消息
-     */
-    public static RestResult success(String msg, Object data) {
-        return new RestResult(ExceptionCode.SUCCESS.getCode(), msg, data);
+        return new RestResult(ExceptionCode.SUCCESS.getCode(), "操作成功", data);
     }
 
     /**
